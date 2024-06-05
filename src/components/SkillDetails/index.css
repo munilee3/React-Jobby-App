@@ -1,0 +1,26 @@
+.skill-container {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 48%;
+  margin-bottom: 50px;
+}
+.skill-img {
+  width: 40px;
+  margin-right: 20px;
+}
+.skill-name {
+  font-family: 'roboto';
+  color: #f8fafc;
+  font-size: 17px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .skill-container {
+    width: 32%;
+    margin-bottom: 60px;
+  }
+  .skill-img {
+    width: 60px;
+  }
+}

@@ -1,0 +1,84 @@
+.jobby-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000000;
+}
+.app-login-container {
+  width: 90%;
+  max-width: 468px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #272727;
+  border-radius: 10px;
+}
+.website-logo {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.form-container {
+  width: 90%;
+}
+.label-text {
+  color: #f8fafc;
+  font-family: 'roboto';
+  font-size: 14px;
+}
+.user-inputs {
+  border: 1px solid #64748b;
+  width: 100%;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  background-color: transparent;
+  color: #f8fafc;
+  outline: none;
+}
+.login-btn {
+  width: 100%;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  color: #ffffff;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+.error-msg {
+  font-size: 12px;
+  font-family: 'roboto';
+  color: #ff0b37;
+  margin-top: 3px;
+}
+@media (min-width: 768px) {
+  .website-logo {
+    width: 160px;
+    height: 50px;
+    margin-bottom: 60px;
+  }
+  .label-text {
+    font-size: 15px;
+  }
+  .user-inputs {
+    padding: 10px;
+    margin-bottom: 30px;
+  }
+  .app-login-container {
+    width: 700px;
+    padding: 40px;
+  }
+  .error-msg {
+    font-size: 13px;
+  }
+  .login-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+}

@@ -1,0 +1,12 @@
+.employment-type-container {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.label-text {
+  color: #ffffff;
+  font-family: 'roboto';
+  font-size: 15px;
+  margin-left: 10px;
+  outline: none;
+  cursor: pointer;
+}
