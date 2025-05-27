@@ -7,7 +7,7 @@ import './index.css'
 
 const Header = props => {
   const onClickLogout = () => {
-    Cookies.remove('jwtToken')
+    Cookies.remove('jwt_token')
     const {history} = props
     history.replace('/login')
   }
@@ -51,7 +51,7 @@ const Header = props => {
           <li className="menu-options">Jobs</li>
         </Link>
       </ul>
-      <button type="button" className="logout-btn">
+      <button type="button" className="logout-btn" onClick={onClickLogout}>
         Logout
       </button>
     </nav>

@@ -27,7 +27,7 @@ class LoginForm extends Component {
     const data = await response.json()
     if (response.ok) {
       const {history} = this.props
-      Cookies.set('jwtToken', data.jwt_token, {expires: 1})
+      Cookies.set('jwt_token', data.jwt_token, {expires: 30})
       history.replace('/')
     } else {
       this.setState({isErrorMsg: true, errorMsg: data.error_msg})
@@ -36,7 +36,7 @@ class LoginForm extends Component {
 
   render() {
     const {username, password, errorMsg, isErrorMsg} = this.state
-    const token = Cookies.get('jwtToken')
+    const token = Cookies.get('jwt_token')
     if (token !== undefined) {
       return <Redirect to="/" />
     }

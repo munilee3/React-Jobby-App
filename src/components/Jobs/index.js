@@ -4,6 +4,7 @@ import {BsSearch} from 'react-icons/bs'
 import Loader from 'react-loader-spinner'
 import EmploymentTypeDetails from '../EmploymentTypeDetails'
 import SalaryRangeDetails from '../SalaryRangeDetails'
+import LocationDetails from '../LocationDetails'
 import JobsList from '../JobsList'
 import Header from '../Header'
 import ProfileDetails from '../ProfileDetails'
@@ -47,6 +48,14 @@ const salaryRangesList = [
   },
 ]
 
+const locationsList = [
+  {label: 'Hyderabad', locationId: 'HYDERABAD'},
+  {label: 'Bangalore', locationId: 'BANGALORE'},
+  {label: 'Chennai', locationId: 'CHENNAI'},
+  {label: 'Delhi', locationId: 'DELHI'},
+  {label: 'Mumbai', locationId: 'MUMBAI'},
+]
+
 const apiStatusConstents = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -61,6 +70,7 @@ class Jobs extends Component {
     searchInput: '',
     typeOfEmployment: [],
     salaryRange: '',
+    location: [],
   }
 
   componentDidMount() {
@@ -136,11 +146,11 @@ class Jobs extends Component {
 
   getJobsDetails = async () => {
     this.setState({apiStatus: apiStatusConstents.inProgress})
-    const {searchInput, typeOfEmployment, salaryRange} = this.state
+    const {searchInput, typeOfEmployment, salaryRange, location} = this.state
     const typeOfEmpolymentList =
       typeOfEmployment.length !== 0 ? typeOfEmployment.join(',') : ''
-    const url = `https://apis.ccbp.in/jobs?employment_type=${typeOfEmpolymentList}&minimum_package=${salaryRange}&search=${searchInput}`
-    const token = Cookies.get('jwtToken')
+    const url = `https://apis.ccbp.in/jobs?employment_type=${typeOfEmpolymentList}&minimum_package=${salaryRange}&location=${location}&search=${searchInput}`
+    const token = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
       headers: {
@@ -201,6 +211,26 @@ class Jobs extends Component {
   changeSalaryRange = event => {
     if (event.target.checked) {
       this.setState({salaryRange: event.target.value}, this.getJobsDetails)
+    }
+  }
+
+  changeLocation = eventValue => {
+    if (eventValue.target.checked) {
+      this.setState(
+        prevState => ({
+          location: [...prevState.location, eventValue.target.value],
+        }),
+        this.getJobsDetails,
+      )
+    } else {
+      this.setState(
+        prevState => ({
+          location: prevState.location.filter(
+            eachLocation => eachLocation !== eventValue.target.value,
+          ),
+        }),
+        this.getJobsDetails,
+      )
     }
   }
 
@@ -278,6 +308,17 @@ class Jobs extends Component {
                   key={salaryRange.salaryRangeId}
                   salaryDetails={salaryRange}
                   changeSalaryRange={this.changeSalaryRange}
+                />
+              ))}
+            </ul>
+            <hr className="profile-line" />
+            <h1 className="type-of-employment">Locations</h1>
+            <ul className="employment-types-list">
+              {locationsList.map(location => (
+                <LocationDetails
+                  key={location.locationId}
+                  locationDetails={location}
+                  changeLocation={this.changeLocation}
                 />
               ))}
             </ul>

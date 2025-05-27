@@ -148,7 +148,7 @@ class JobItemDetails extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-    const token = Cookies.get('jwtToken')
+    const token = Cookies.get('jwt_token')
     const url = `https://apis.ccbp.in/jobs/${id}`
     const options = {
       method: 'GET',

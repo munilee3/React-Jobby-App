@@ -44,7 +44,7 @@ class ProfileDetails extends Component {
   getProfileDetails = async () => {
     this.setState({apiStatus: apiStatusConstents.inProgress})
     const url = 'https://apis.ccbp.in/profile'
-    const token = Cookies.get('jwtToken')
+    const token = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
       headers: {
