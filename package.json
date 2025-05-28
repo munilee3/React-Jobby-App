@@ -72,5 +72,6 @@
       "Firefox ESR",
       "not ie < 11"
     ]
-  }
+  },
+  "packageManager": "npm@latest"
 }
