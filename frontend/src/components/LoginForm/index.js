@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import './index.css'
 
 class LoginForm extends Component {
@@ -18,12 +18,18 @@ class LoginForm extends Component {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
-    const apiUrl = 'https://apis.ccbp.in/login'
-    const options = {
+    const apiUrl = 'http://localhost:4000/login'
+    // const options = {
+    //   method: 'POST',
+    //   body: JSON.stringify(userDetails),
+    // }
+    const response = await fetch(apiUrl, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(userDetails),
-    }
-    const response = await fetch(apiUrl, options)
+    })
     const data = await response.json()
     if (response.ok) {
       const {history} = this.props
@@ -75,6 +81,12 @@ class LoginForm extends Component {
               Login
             </button>
             {isErrorMsg && <p className="error-msg">*{errorMsg}</p>}
+            <p className="already-have-acount-text">
+              Don`t have an account
+              <Link className="register-link" to="/register">
+                Register
+              </Link>
+            </p>
           </form>
         </div>
       </div>
